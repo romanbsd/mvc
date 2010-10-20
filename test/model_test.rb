@@ -507,6 +507,19 @@ class ModelTest < Test::Unit::TestCase
       end
     end
   end
+  
+  context "A User with Person with Address relationship: User.extjs_fields(:password, :person => [:first, :address])" do
+    setup do
+      clean_all
+      User.extjs_fields(:password, :person => [:first, :address])
+	    @fields = User.extjs_record[:fields]
+    end
+    should "handle the 2 level nesting correctly" do
+      assert_array_has_item @fields, 'have at least one field with a mapping that is two levels deep' do |field|
+        (field[:mapping]||'').match(/\..*\./)
+      end
+    end
+  end
 
   protected
   def assert_array_has_item array, item_description, &blk
