@@ -64,9 +64,11 @@ module ExtJS::Data
         json = @config.to_json
         json[json.length-1] = ','
         json += "\"writer\":new Ext.data.#{@format.capitalize}Writer(#{@writer.to_json})}"
-        "<script>new #{@type}(#{json});#{script}</script>"
+        javascript = "new #{@type}(#{json});#{script} "  
+        script_tag ?  "<script>#{javascript}</script>" : javascript
       else
-        "<script>new #{@type}(#{@config.to_json});#{script}</script>"
+        javascript =  "new #{@type}(#{@config.to_json});#{script}"
+        script_tag ?  "<script>#{javascript}</script>" : javascript
       end
     end
     
