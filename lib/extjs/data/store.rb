@@ -112,9 +112,9 @@ private
       else
         if @config["api"]
           proxy["api"] = {}
-          @config["api"].each {|k,v| proxy["api"][k] = "/#{@controller.controller_name}/#{v}" }
+          @config["api"].each {|k,v| proxy["api"][k] = "/#{@controller.controller_path}/#{v}" }
         else
-          proxy["url"] = "/#{@controller.controller_name}.#{@format.to_s}"
+          proxy["url"] = "/#{@controller.controller_path}.#{@format.to_s}"
         end
       end
       proxy
