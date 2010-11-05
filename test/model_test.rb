@@ -513,10 +513,10 @@ class ModelTest < Test::Unit::TestCase
       end
     end
   end
-  
+
   context "A User with Person with Address relationship: User.extjs_fields(:password, :person => [:first, :address])" do
     setup do
-      clean_all
+      App.clean_all
       User.extjs_fields(:password, :person => [:first, :address])
 	    @fields = User.extjs_record[:fields]
     end
