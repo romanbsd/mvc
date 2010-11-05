@@ -293,7 +293,7 @@ module ExtJS
           if config.has_key?(:mapping) && config.has_key?(:parent_trail)
             field.update( # <-- We use a template for rendering mapped field-names.
               :name => config[:parent_trail].to_s + self.extjs_parent_trail_template.call(field[:name]),
-              :mapping => "#{config[:mapping]}.#{field[:name]}"
+              :mapping => "#{config[:mapping]}.#{field[:mapping] || field[:name]}"
             )
           end
           field.update(config.except(:mapping, :parent_trail))

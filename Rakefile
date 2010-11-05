@@ -13,7 +13,8 @@ begin
     gem.add_development_dependency "shoulda"
     gem.add_development_dependency "mocha"
     gem.add_development_dependency "extlib"
-    
+    gem.add_development_dependency "sqlite3-ruby"
+
     gem.test_files = []
     gem.files =  FileList["[A-Z]*", "{bin,generators,lib,test}/**/*", 'lib/jeweler/templates/.gitignore']
 
